@@ -18,11 +18,7 @@ import csv
 
 path = './cities.csv'
 
-file = open(path, newline="")
-reader = csv.reader(file)
-header =  next(reader)
 
-# print(header)
 
 class City: 
   def __init__(self, name, lat, lon):
@@ -37,20 +33,11 @@ cities = []
 
 def cityreader(cities=[]):
 
-  for row in reader: 
-    #row = ['city', 'state_name', 'county_name', 'lat', 'lng', 'population', 'density', 'timezone', 'zips']
-    
-    # city = row[0]
-    # state_name = row[1]
-    # county_name = row[2]
-    # lat = float(row[3])
-    # lng = float(row[4])
-    # population = float(row[5])
-    # density = float(row[6])
-    # timezone = row[7]
-    # zips = row[8]
+  file = open(path, newline="")
+  reader = csv.reader(file)
+  next(reader)
 
-    # City = [city, state_name, county_name, lat, lng, population, density, timezone, zips]
+  for row in reader: 
 
     cities.append(City(row[0],float(row[3]),float(row[4])))
 
@@ -70,6 +57,8 @@ for c in cities:
   coOrds = (c.name,c.lat,c.lon)
   print((c.name,c.lat,c.lon))
 
+
+print(len(cities))
 # STRETCH GOAL!
 #
 # Allow the user to input two points, each specified by latitude and longitude.
